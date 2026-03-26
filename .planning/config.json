@@ -1,0 +1,13 @@
+{
+    "workflow":  {
+                     "auto_advance":  true,
+                     "plan_check":  false,
+                     "verifier":  false,
+                     "research":  false
+                 },
+    "granularity":  "standard",
+    "model_profile":  "balanced",
+    "parallelization":  true,
+    "mode":  "yolo",
+    "commit_docs":  true
+}

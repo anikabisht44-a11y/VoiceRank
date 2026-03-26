@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #1E2A5E;
+  --color-brand-secondary: #E6B91E;
+  --color-brand-success: #2E7D64;
+  --color-brand-warning: #E67E22;
+  --color-brand-error: #C73D23;
+  --color-brand-surface: #F8F9FC;
+  --color-brand-text: #1A1F36;
+  --color-brand-text-secondary: #6B7280;
+  
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand-text font-inter antialiased;
+  }
+}
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  @apply min-h-[400px] outline-none text-brand-text leading-relaxed p-4;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--color-brand-text-secondary);
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror h1 {
+  @apply text-4xl font-bold mb-6 mt-8 text-brand-primary;
+}
+
+.ProseMirror h2 {
+  @apply text-2xl font-semibold mb-4 mt-6 text-brand-primary;
+}
+
+.ProseMirror p {
+  @apply mb-4 text-base;
+}
+
+.ProseMirror ul {
+  @apply list-disc list-inside mb-4 pl-4;
+}
+
+.ProseMirror ol {
+  @apply list-decimal list-inside mb-4 pl-4;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-brand-secondary pl-4 italic text-brand-text-secondary my-4;
+}
+
+.ProseMirror a {
+  @apply text-blue-600 underline;
+}
