@@ -6,6 +6,7 @@ import { VoiceSetup } from './screens/VoiceSetup';
 import { Generate } from './screens/Generate';
 import { BlogEditor } from './screens/BlogEditor';
 import { Distribution } from './screens/Distribution';
+import { Dashboard } from './screens/Dashboard';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/generate" element={<Generate />} />
               <Route path="/editor" element={<BlogEditor />} />
               <Route path="/distribution" element={<Distribution />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

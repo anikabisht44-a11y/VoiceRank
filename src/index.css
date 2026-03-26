@@ -1,27 +1,142 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #1E2A5E;
-  --color-brand-secondary: #E6B91E;
+  --color-brand-primary: #1E2A5E; /* Deep Indigo */
+  --color-brand-secondary: #E6B91E; /* Warm Gold */
+  --color-brand-accent: #E6B91E; /* Bright Orange CTA */
   --color-brand-success: #2E7D64;
-  --color-brand-warning: #E67E22;
   --color-brand-error: #C73D23;
-  --color-brand-surface: #F8F9FC;
-  --color-brand-text: #1A1F36;
+  --color-brand-surface: #F8F9FC; /* Cream/Off-White Background */
+  --color-brand-text: #1A1F36; /* Pitch Black */
   --color-brand-text-secondary: #6B7280;
-  
-  --font-inter: 'Inter', sans-serif;
+  --color-brand-gray: #E5E7EB; /* Light Gray for inner cards */
+
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-white text-brand-text font-inter antialiased;
+    background-color: var(--color-brand-surface);
+    color: var(--color-brand-text);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-brand-text);
   }
 }
 
-/* TipTap Editor Styles */
+/* -------------------------------------------------------------------------- */
+/* FIGMA DESIGN SYSTEM (Classes named brutalist for legacy mapping)           */
+/* -------------------------------------------------------------------------- */
+
+@layer components {
+  /* Generic Clean Container */
+  .brutalist-card {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Internal Cards */
+  .brutalist-box {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  /* Core Buttons */
+  .brutalist-button {
+    background-color: var(--color-brand-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(30, 42, 94, 0.2);
+  }
+
+  .brutalist-button:hover {
+    background-color: #151e43;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(30, 42, 94, 0.25);
+  }
+
+  .brutalist-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Secondary Buttons mapped to black class for now */
+  .brutalist-button-black {
+    background-color: var(--color-brand-secondary);
+    color: #1A1F36;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(230, 185, 30, 0.2);
+  }
+
+  .brutalist-button-black:hover {
+    background-color: #d4a713;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(230, 185, 30, 0.3);
+  }
+
+  /* Input Fields */
+  .brutalist-input {
+    background-color: white;
+    border: 1px solid #D1D5DB;
+    color: var(--color-brand-text);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .brutalist-input:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 3px rgba(30, 42, 94, 0.1);
+  }
+
+  /* Progress Meters & Bars */
+  .brutalist-meter-bg {
+    background-color: #E5E7EB;
+    height: 8px;
+    border-radius: 4px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .brutalist-meter-fill {
+    background-color: var(--color-brand-primary);
+    height: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* TIPTAP EDITOR EDITORIAL STYLES                                             */
+/* -------------------------------------------------------------------------- */
+
 .ProseMirror {
-  @apply min-h-[400px] outline-none text-brand-text leading-relaxed p-4;
+  min-height: 400px;
+  outline: none;
+  color: var(--color-brand-text);
+  line-height: 1.7;
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
@@ -33,29 +148,63 @@
 }
 
 .ProseMirror h1 {
-  @apply text-4xl font-bold mb-6 mt-8 text-brand-primary;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  color: var(--color-brand-primary);
+  line-height: 1.2;
 }
 
 .ProseMirror h2 {
-  @apply text-2xl font-semibold mb-4 mt-6 text-brand-primary;
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  color: var(--color-brand-text);
 }
 
 .ProseMirror p {
-  @apply mb-4 text-base;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-brand-text);
 }
 
 .ProseMirror ul {
-  @apply list-disc list-inside mb-4 pl-4;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
 .ProseMirror ol {
-  @apply list-decimal list-inside mb-4 pl-4;
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  font-weight: 600;
 }
 
 .ProseMirror blockquote {
-  @apply border-l-4 border-brand-secondary pl-4 italic text-brand-text-secondary my-4;
+  border-left: 4px solid var(--color-brand-secondary);
+  padding-left: 1.5rem;
+  font-style: italic;
+  color: var(--color-brand-text-secondary);
+  margin: 1.5rem 0;
+  background-color: var(--color-brand-surface);
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
 }
 
 .ProseMirror a {
-  @apply text-blue-600 underline;
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 600;
+}
+
+.ProseMirror hr {
+  border-top: 2px solid #E5E7EB;
+  margin: 2rem 0;
 }

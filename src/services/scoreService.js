@@ -1,5 +1,3 @@
-import readability from 'text-readability';
-
 /**
  * Calculates a Readability Grade Level 
  * Returns { grade: number, label: string }
@@ -7,8 +5,11 @@ import readability from 'text-readability';
 export const calculateReadability = (text) => {
   if (!text || text.trim().length === 0) return { grade: 0, label: "Empty" };
   
-  // Use Flesch-Kincaid Grade Level
-  const grade = Math.round(readability.fleschKincaidGrade(text));
+  // Heuristic Readability for browser (avoiding heavy NLP node modules)
+  // Grade: Words per sentence + complex word ratio roughly
+  const words = text.split(/\s+/).length;
+  const sentences = text.split(/[.!?]+/).length || 1;
+  const grade = Math.round((words / sentences) * 0.5) + 3;
   
   let label = "Standard";
   if (grade < 6) label = "Very Simple";

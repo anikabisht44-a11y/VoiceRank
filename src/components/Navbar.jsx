@@ -4,51 +4,78 @@ import { useAppContext } from '../context/AppContext';
 import { cn } from './ui';
 
 export const Navbar = () => {
-  const { state, dispatch } = useAppContext();
+  const { state } = useAppContext();
 
   return (
-    <nav className="w-full border-b border-gray-100 bg-white sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <nav className="w-full border-b-3 border-[var(--color-brand-text)] bg-[var(--color-brand-surface)] sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-white">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span className="font-inter font-bold text-xl tracking-tight text-brand-primary">
+        {/* Logo - Brutalist Typography */}
+        <div className="flex items-center gap-3">
+          <span className="font-heading font-black text-2xl tracking-tighter text-[var(--color-brand-text)] uppercase">
             VOICERANK
           </span>
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav - Editorial Links */}
         <div className="hidden md:flex items-center space-x-8">
           <NavLink 
             to="/" 
-            className={({isActive}) => cn("text-sm font-semibold transition-colors hover:text-brand-primary", isActive ? "text-brand-primary" : "text-brand-text-secondary")}
+            className={({isActive}) => cn(
+              "text-xs font-black tracking-widest uppercase transition-all pb-1", 
+              isActive ? "text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-text)]" 
+                       : "text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)]"
+            )}
           >
-            Voice Setup
+            Voice Profile
           </NavLink>
           <NavLink 
             to="/generate" 
-            className={({isActive}) => cn("text-sm font-semibold transition-colors hover:text-brand-primary", isActive ? "text-brand-primary" : "text-brand-text-secondary")}
+            className={({isActive}) => cn(
+              "text-xs font-black tracking-widest uppercase transition-all pb-1", 
+              isActive ? "text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-text)]" 
+                       : "text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)]"
+            )}
           >
-            Generate
+            SEO Research
           </NavLink>
-          
-          {/* Demo Mode Toggle */}
-          <div className="flex items-center gap-2 ml-4 pl-4 border-l border-gray-200">
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Demo Mode</span>
-            <button 
-              onClick={() => dispatch({ type: 'TOGGLE_DEMO_MODE' })}
-              className={cn("w-10 h-5 rounded-full transition-colors relative", state.demoMode ? "bg-brand-success" : "bg-gray-300")}
-            >
-              <div className={cn("absolute top-0.5 mt-px left-1 bg-white w-4 h-4 rounded-full transition-transform", state.demoMode ? "translate-x-4" : "translate-x-0")} />
-            </button>
-          </div>
+          <NavLink 
+            to="/editor" 
+            className={({isActive}) => cn(
+              "text-xs font-black tracking-widest uppercase transition-all pb-1", 
+              isActive ? "text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-text)]" 
+                       : "text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)]"
+            )}
+          >
+            Editor Console
+          </NavLink>
+          <NavLink 
+            to="/distribution" 
+            className={({isActive}) => cn(
+              "text-xs font-black tracking-widest uppercase transition-all pb-1", 
+              isActive ? "text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-text)]" 
+                       : "text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)]"
+            )}
+          >
+            Distribution
+          </NavLink>
+          <NavLink 
+            to="/dashboard" 
+            className={({isActive}) => cn(
+              "text-xs font-black tracking-widest uppercase transition-all pb-1", 
+              isActive ? "text-[var(--color-brand-text)] border-b-2 border-[var(--color-brand-text)]" 
+                       : "text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)]"
+            )}
+          >
+            Analytics
+          </NavLink>
+        </div>
+
+        {/* Profile Avatar Placeholder */}
+        <div className="w-8 h-8 rounded-full border-2 border-[var(--color-brand-text)] flex items-center justify-center bg-white cursor-pointer hover:bg-[var(--color-brand-gray)]">
+          <svg className="w-4 h-4 text-[var(--color-brand-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
         </div>
 
       </div>

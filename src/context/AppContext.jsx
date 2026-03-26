@@ -11,7 +11,7 @@ const initialState = {
     readabilityGrade: 0,
     aiDetectionScore: 0
   },
-  demoMode: true,     // Default to true for hackathon reliability
+  demoMode: false,     // Default to false (Production mode)
   isGlobalLoading: false
 };
 
@@ -23,8 +23,6 @@ function appReducer(state, action) {
       return { ...state, blog: action.payload };
     case 'SET_SCORES':
       return { ...state, scores: { ...state.scores, ...action.payload } };
-    case 'TOGGLE_DEMO_MODE':
-      return { ...state, demoMode: !state.demoMode };
     case 'SET_LOADING':
       return { ...state, isGlobalLoading: action.payload };
     default:
